@@ -15,7 +15,9 @@ export default async function handler(req, res) {
 
   try {
     if (action === 'approve') {
-      const response = await fetch(`https://minepi.com{paymentId}/approve`, {
+            const baseUrl = "https://" + "://minepi.com" + "/v2/payments/";
+      const response = await fetch(baseUrl + paymentId + "/approve", {
+        
         method: 'POST',
         headers: {
           'Authorization': `Key ${API_KEY}`,
@@ -25,9 +27,13 @@ export default async function handler(req, res) {
       const data = await response.json();
       return res.status(response.status).json(data);
     }
-
+      
+  
+        
     if (action === 'complete') {
-      const response = await fetch(`https://minepi.com{paymentId}/complete`, {
+            const baseUrl = "https://" + "://minepi.com" + "/v2/payments/";
+      const response = await fetch(baseUrl + paymentId + "/complete", {
+        
         method: 'POST',
         headers: {
           'Authorization': `Key ${API_KEY}`,
